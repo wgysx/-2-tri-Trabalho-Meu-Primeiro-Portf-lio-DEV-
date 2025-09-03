@@ -1,28 +1,516 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Projetos</title>
-    <link rel="stylesheet" href="estilos.css">
+    <title>Meus Projetos | Pedro Henrique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #f9f9f9;
+            --card-color: #ffffff;
+            --text-color: #333333;
+            --text-light: #777777;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --primary-color: #5dade2;
+            --secondary-color: #58d68d;
+            --background-color: #1a1a1a;
+            --card-color: #2d2d2d;
+            --text-color: #f0f0f0;
+            --text-light: #b0b0b0;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-color);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            padding: 150px 0 50px;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-light);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 50px 0 100px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: fadeIn 1s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tech-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .project-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-color);
+            padding: 50px 0;
+            text-align: center;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 120px 0 30px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Meus Projetos</h1>
-        <p>Confira alguns dos projetos que já desenvolvi.</p>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Pedro<span>Musto</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="projetos.html" style="color: var(--primary-color);">Projetos</a></li>
+                    <li><a href="curriculo.html">Currículo</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
     </header>
 
-    <section class="projeto">
-        <h2>Projeto 1: Site Responsivo</h2>
-        <img src="imagens/projeto1.jpg" alt="Projeto 1" class="imagem-projeto">
-        <p>Este projeto é um site responsivo desenvolvido com HTML, CSS e JavaScript. Ele se adapta a diferentes tamanhos de tela, oferecendo uma boa experiência em dispositivos móveis.</p>
-        <button onclick="window.location.href='https://linkdoproyecto.com'">Ver Mais</button>
-    </section>
+    <div class="container">
+        <section class="page-hero">
+            <h1>Meus <span style="color: var(--secondary-color);">Projetos</span></h1>
+            <p>Confira abaixo alguns dos projetos que desenvolvi durante minha jornada de aprendizado em programação.</p>
+        </section>
+
+        <section class="projects">
+            <h2 class="section-title">Projetos em Destaque</h2>
+            <div class="projects-grid">
+                <!-- Projeto 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/3498db/FFFFFF?text=Site+Pessoal" alt="Site Pessoal">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Portfólio Pessoal</h3>
+                        <p class="project-description">Meu primeiro site pessoal desenvolvido com HTML, CSS e JavaScript. Design responsivo com modo claro e escuro.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsivo</span>
+                        </div>
+                        <a href="#" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/2ecc71/FFFFFF?text=App+Tasks" alt="App de Tarefas">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Organizador de Tarefas</h3>
+                        <p class="project-description">Aplicativo web para gerenciamento de tarefas diárias. Permite adicionar, editar, excluir e marcar tarefas como concluídas.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">LocalStorage</span>
+                        </div>
+                        <a href="#" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/e74c3c/FFFFFF?text=Game+JS" alt="Jogo JavaScript">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Jogo da Memória</h3>
+                        <p class="project-description">Jogo da memória com tema de super-heróis. Desenvolvido para praticar lógica de programação e manipulação do DOM.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Game</span>
+                        </div>
+                        <a href="#" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- Projeto 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/9b59b6/FFFFFF?text=Weather+App" alt="App de Clima">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Previsão do Tempo</h3>
+                        <p class="project-description">Aplicativo de previsão do tempo que consome API externa para mostrar dados meteorológicos em tempo real.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">API</span>
+                        </div>
+                        <a href="#" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- Projeto 5 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/f39c12/FFFFFF?text=Calculadora" alt="Calculadora">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Calculadora Interativa</h3>
+                        <p class="project-description">Calculadora com interface moderna e funcionalidades básicas e avançadas, incluindo histórico de operações.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">UI/UX</span>
+                        </div>
+                        <a href="#" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- Projeto 6 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/34495e/FFFFFF?text=Blog+Tech" alt="Blog Tecnológico">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Blog de Tecnologia</h3>
+                        <p class="project-description">Blog responsivo com artigos sobre tecnologia e programação. Design moderno com sistema de comentários.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsivo</span>
+                        </div>
+                        <a href="#" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <p>Voltar para a <a href="index.html">Página Inicial</a>.</p>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 Pedro Henrique Rodrigues Musto. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        // Toggle de tema claro/escuro
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Verificar se há preferência salva
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Animação de revelação ao scroll
+        const revealElements = document.querySelectorAll('.project-card, .section-title');
+        
+        function revealOnScroll() {
+            const windowHeight = window.innerHeight;
+            
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Inicializar elementos com opacidade 0 para animação
+        revealElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 </html>
