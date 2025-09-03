@@ -1,0 +1,95 @@
+/* Definir o estilo principal */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo da seção de apresentação */
+.sobre {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.sobre img.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+/* Estilo da seção de habilidades */
+.habilidades {
+    margin: 20px;
+}
+
+.habilidades ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.habilidades ul li {
+    background-color: #ddd;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Estilo para projetos */
+.projeto {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.projeto img.imagem-projeto {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #45a049;
+}
