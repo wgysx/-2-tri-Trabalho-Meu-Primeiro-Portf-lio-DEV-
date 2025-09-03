@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Projetos | Pedro Henrique</title>
+    <title>Projetos | Pedro Henrique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --background-color: #f9f9f9;
-            --card-color: #ffffff;
-            --text-color: #333333;
-            --text-light: #777777;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --primary-color: #000000;
+            --secondary-color: #333333;
+            --background-color: #ffffff;
+            --card-color: #f8f8f8;
+            --text-color: #000000;
+            --text-light: #666666;
+            --accent-color: #444444;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
         }
 
         .dark-mode {
-            --primary-color: #5dade2;
-            --secondary-color: #58d68d;
-            --background-color: #1a1a1a;
-            --card-color: #2d2d2d;
-            --text-color: #f0f0f0;
-            --text-light: #b0b0b0;
+            --primary-color: #ffffff;
+            --secondary-color: #cccccc;
+            --background-color: #121212;
+            --card-color: #1e1e1e;
+            --text-color: #ffffff;
+            --text-light: #aaaaaa;
+            --accent-color: #dddddd;
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
@@ -35,7 +37,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
@@ -50,12 +52,13 @@
 
         /* Header */
         header {
-            background-color: var(--card-color);
+            background-color: var(--background-color);
             box-shadow: var(--shadow);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid var(--card-color);
         }
 
         nav {
@@ -75,7 +78,7 @@
         }
 
         .logo span {
-            color: var(--secondary-color);
+            font-weight: 300;
         }
 
         .nav-links {
@@ -99,7 +102,7 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 1px;
             bottom: -5px;
             left: 0;
             background-color: var(--primary-color);
@@ -130,6 +133,7 @@
             font-size: 3rem;
             margin-bottom: 20px;
             color: var(--primary-color);
+            font-weight: 700;
         }
 
         .page-hero p {
@@ -137,6 +141,7 @@
             max-width: 700px;
             margin: 0 auto;
             color: var(--text-light);
+            font-weight: 400;
         }
 
         /* Projects Section */
@@ -150,14 +155,15 @@
             margin-bottom: 50px;
             color: var(--primary-color);
             position: relative;
+            font-weight: 600;
         }
 
         .section-title:after {
             content: '';
             position: absolute;
             width: 100px;
-            height: 3px;
-            background-color: var(--secondary-color);
+            height: 2px;
+            background-color: var(--primary-color);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
@@ -171,16 +177,16 @@
 
         .project-card {
             background-color: var(--card-color);
-            border-radius: 15px;
+            border-radius: 2px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             animation: fadeIn 1s ease;
+            border: 1px solid var(--card-color);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .project-image {
@@ -194,10 +200,12 @@
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
+            filter: grayscale(100%);
         }
 
         .project-card:hover .project-image img {
             transform: scale(1.1);
+            filter: grayscale(0%);
         }
 
         .project-content {
@@ -208,6 +216,7 @@
             font-size: 1.5rem;
             margin-bottom: 15px;
             color: var(--primary-color);
+            font-weight: 600;
         }
 
         .project-description {
@@ -223,28 +232,31 @@
         }
 
         .tech-tag {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--background-color);
+            color: var(--text-color);
             padding: 5px 12px;
-            border-radius: 20px;
+            border-radius: 2px;
             font-size: 0.8rem;
             font-weight: 500;
+            border: 1px solid var(--primary-color);
         }
 
         .project-link {
             display: inline-block;
             padding: 10px 25px;
-            background-color: var(--secondary-color);
-            color: white;
+            background-color: transparent;
+            color: var(--text-color);
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 2px;
             font-weight: 500;
             transition: var(--transition);
-            box-shadow: var(--shadow);
+            border: 1px solid var(--primary-color);
+            letter-spacing: 1px;
         }
 
         .project-link:hover {
             background-color: var(--primary-color);
+            color: var(--background-color);
             transform: translateY(-3px);
         }
 
@@ -254,6 +266,7 @@
             padding: 50px 0;
             text-align: center;
             box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 1px solid var(--card-color);
         }
 
         .social-links {
@@ -263,18 +276,20 @@
         .social-links a {
             display: inline-block;
             margin: 0 15px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
-            color: white;
+            width: 45px;
+            height: 45px;
+            background-color: transparent;
+            color: var(--text-color);
             border-radius: 50%;
-            line-height: 50px;
-            font-size: 1.5rem;
+            line-height: 45px;
+            font-size: 1.2rem;
             transition: var(--transition);
+            border: 1px solid var(--text-color);
         }
 
         .social-links a:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
+            color: var(--background-color);
             transform: translateY(-5px);
         }
 
@@ -314,7 +329,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo">Pedro<span>Musto</span></a>
+                <a href="index.html" class="logo">PEDRO<span>MUSTO</span></a>
                 <ul class="nav-links">
                     <li><a href="index.html">Início</a></li>
                     <li><a href="projetos.html" style="color: var(--primary-color);">Projetos</a></li>
@@ -330,7 +345,7 @@
 
     <div class="container">
         <section class="page-hero">
-            <h1>Meus <span style="color: var(--secondary-color);">Projetos</span></h1>
+            <h1>Meus <span style="font-weight: 300;">Projetos</span></h1>
             <p>Confira abaixo alguns dos projetos que desenvolvi durante minha jornada de aprendizado em programação.</p>
         </section>
 
@@ -340,7 +355,7 @@
                 <!-- Projeto 1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://placehold.co/600x400/3498db/FFFFFF?text=Site+Pessoal" alt="Site Pessoal">
+                        <img src="https://placehold.co/600x400/FFFFFF/000000?text=Site+Pessoal" alt="Site Pessoal">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Portfólio Pessoal</h3>
@@ -358,7 +373,7 @@
                 <!-- Projeto 2 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://placehold.co/600x400/2ecc71/FFFFFF?text=App+Tasks" alt="App de Tarefas">
+                        <img src="https://placehold.co/600x400/FFFFFF/000000?text=App+Tasks" alt="App de Tarefas">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Organizador de Tarefas</h3>
@@ -376,7 +391,7 @@
                 <!-- Projeto 3 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://placehold.co/600x400/e74c3c/FFFFFF?text=Game+JS" alt="Jogo JavaScript">
+                        <img src="https://placehold.co/600x400/FFFFFF/000000?text=Game+JS" alt="Jogo JavaScript">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Jogo da Memória</h3>
@@ -386,60 +401,6 @@
                             <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Game</span>
-                        </div>
-                        <a href="#" class="project-link">Ver Detalhes</a>
-                    </div>
-                </div>
-
-                <!-- Projeto 4 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://placehold.co/600x400/9b59b6/FFFFFF?text=Weather+App" alt="App de Clima">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Previsão do Tempo</h3>
-                        <p class="project-description">Aplicativo de previsão do tempo que consome API externa para mostrar dados meteorológicos em tempo real.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">API</span>
-                        </div>
-                        <a href="#" class="project-link">Ver Detalhes</a>
-                    </div>
-                </div>
-
-                <!-- Projeto 5 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://placehold.co/600x400/f39c12/FFFFFF?text=Calculadora" alt="Calculadora">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Calculadora Interativa</h3>
-                        <p class="project-description">Calculadora com interface moderna e funcionalidades básicas e avançadas, incluindo histórico de operações.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">UI/UX</span>
-                        </div>
-                        <a href="#" class="project-link">Ver Detalhes</a>
-                    </div>
-                </div>
-
-                <!-- Projeto 6 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://placehold.co/600x400/34495e/FFFFFF?text=Blog+Tech" alt="Blog Tecnológico">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Blog de Tecnologia</h3>
-                        <p class="project-description">Blog responsivo com artigos sobre tecnologia e programação. Design moderno com sistema de comentários.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsivo</span>
                         </div>
                         <a href="#" class="project-link">Ver Detalhes</a>
                     </div>
